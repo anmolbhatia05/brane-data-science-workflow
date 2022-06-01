@@ -1,0 +1,17 @@
+import compute_ml;
+
+
+print(read("/data/test.csv"));
+print(read("/data/train.csv"));
+
+preprocess("/data/train.csv", 1);
+preprocess("/data/test.csv", 0);
+
+model("/data/prep_data1.csv", "/data/prep_data0.csv", "rfc");
+print(accuracy("/data/prep_data1.csv", "rfc"));
+
+model("/data/prep_data1.csv", "/data/prep_data0.csv", "dtc");
+print(accuracy("/data/prep_data1.csv", "dtc"));
+
+model("/data/prep_data1.csv", "/data/prep_data0.csv", "bnb");
+print(accuracy("/data/prep_data1.csv", "bnb"));
