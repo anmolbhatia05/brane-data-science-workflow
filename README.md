@@ -1,5 +1,14 @@
-# brane-data-science-workflow
+## Introduction
 
-Kaggle contest page - https://www.kaggle.com/competitions/titanic/overview
+This programming project implements a data processing pipeline for [Titanic Kaggle competition](https://www.kaggle.com/c/titanic) using the [Brane](https://github.com/epi-project/brane) framework.
+The implementation is divided into 2 packages:
+- `brane_compute`
+- `brane_visualize`
 
-Branescript documentation - https://wiki.enablingpersonalizedinterventions.nl/user-guide/branescript/introduction.html
+
+## Build
+
+
+
+## Run
+
