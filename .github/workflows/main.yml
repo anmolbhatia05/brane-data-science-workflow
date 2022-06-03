@@ -1,0 +1,44 @@
+# Workflow to run the brane dsl for brane compute and visualize packages
+
+name: CI
+
+on:
+  # Triggers the workflow on push or pull request events but only for the main branch
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  build-and-test-brane-dsl:
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+      - name: Setting up docker with buildx
+        run: |
+          git clone https://github.com/docker/buildx.git && cd buildx
+          make install
+          docker buildx install
+          docker buildx create --use
+          cd ..
+      - name: Downloading brane repository and installing brane cli and instance 
+        run: |
+          mkdir -p ~/bin
+          sudo wget -O ~/bin/brane https://github.com/epi-project/brane/releases/download/v0.6.3/brane-linux-x86_64
+          sudo chmod +x ~/bin/brane
+          sudo echo 'export PATH=$PATH:$HOME/bin' >>~/.profile
+          source ~/.profile
+      - name: Importing the brane compute and visualize package
+        run: |
+          source ~/.profile
+          brane import web-services-and-cloud-based-systems/brane-compute-package
+          brane import web-services-and-cloud-based-systems/brane-visualise-package
+      - name: Running the brane DSL script
+        run: |
+          brane run --data /data titanic_workflow.bs
