@@ -42,4 +42,4 @@ jobs:
       - name: Running the brane DSL script
         run: |
           source ~/.profile
-          brane run --data /data titanic_workflow.bs
+          brane run titanic_workflow.bs --data /data
