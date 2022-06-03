@@ -1,3 +1,5 @@
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.6612493.svg)](https://doi.org/10.5281/zenodo.6612493)
+
 ## Introduction
 
 This branescript is created for the data processing pipeline for the kaggle data science project [Titanic Kaggle competition](https://www.kaggle.com/c/titanic) using the [Brane](https://github.com/epi-project/brane) framework.
