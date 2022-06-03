@@ -4,6 +4,9 @@ import brane_visualize;
 // Function that mounts the train.csv and test.csv files in this brane package in the /data folder
 print(mount());
 
+// Function that creates /img folder for the visualizing graphs 
+print(create_img());
+
 // Function that returns the shape of the dataframe after reading the data from a file.
 print(shape("/data/train.csv"));
 print(shape("/data/test.csv"));
