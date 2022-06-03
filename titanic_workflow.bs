@@ -2,43 +2,31 @@ import brane_compute;
 import brane_visualize;
 
 // Function that mounts the train.csv and test.csv files in this brane package in the /data folder
-// Compute package call
 print(mount());
 
 // Function that returns the shape of the dataframe after reading the data from a file.
-// Compute package call
 print(shape("/data/train.csv"));
 print(shape("/data/test.csv"));
 
-// it first fetches the dataframe and calls the internal methods to plot graphs used for understanding the data (EDA).  
-// plots histograms and bar plots 
-// Visualise package call
+// it first fetches the dataframe and calls the internal methods to plot graphs used for understanding the data (EDA) - plots histograms and bar plots 
 print(visualize_EDA("/data/train.csv"));
 
-// Function that preprocesses the dataset (train, test)
-// 1) preprocesses the name feature to extract the title and create a different feature out of it. 
-// 2) imputs some logical value for the null/na value in a feature
-// 3) changes categorical data to numerical data
-// 4) handles the missing age for instances
-// Compute package call, 1 for training dataset and 0 for test dataset
+// Function that preprocesses the dataset (train, test) - 1) preprocesses the name feature to extract the title and create a different feature out of it. 2) imputs some logical value for the null/na value in a feature 3) changes categorical data to numerical data 4) handles the missing age for instances. 1 for training dataset and 0 for test dataset
 preprocess("/data/train.csv", 1);
 preprocess("/data/test.csv", 0);
 
+
 // Modelling and accuracy for random forest classifier
-// Compute package calls
 model("/data/prep_data1.csv", "/data/prep_data0.csv", "rfc");
 print(accuracy("/data/prep_data1.csv", "rfc"));
 
 // Modelling and accuracy for decision tree classifier
-// Compute package calls
 model("/data/prep_data1.csv", "/data/prep_data0.csv", "dtc");
 print(accuracy("/data/prep_data1.csv", "dtc"));
 
 // Modelling and accuracy for Naive Bayes
-// Compute package calls
 model("/data/prep_data1.csv", "/data/prep_data0.csv", "bnb");
 print(accuracy("/data/prep_data1.csv", "bnb"));
 
 // Visualizing results for Random forest classifiers
-// Compute package calls
 print(visualize_results("/data/prep_data1.csv", "rfc"));
