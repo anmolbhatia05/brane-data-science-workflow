@@ -41,4 +41,5 @@ jobs:
           brane import web-services-and-cloud-based-systems/brane-visualise-package
       - name: Running the brane DSL script
         run: |
+          source ~/.profile
           brane run --data /data titanic_workflow.bs
